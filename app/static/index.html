@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LLM Evaluation Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/dashboard.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">EV</div>
+        <div>
+          <p class="brand-title">Eval Platform</p>
+          <p class="brand-sub">LLM Observability</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <button class="nav-item active" data-panel="overview">Overview</button>
+        <button class="nav-item" data-panel="evaluations">Evaluations</button>
+        <button class="nav-item" data-panel="datasets">Datasets</button>
+        <button class="nav-item" data-panel="traces">Traces</button>
+      </nav>
+      <div class="sidebar-foot">
+        <div class="sidebar-status">
+          <span class="status-dot"></span>
+          <span id="system-status">System online</span>
+        </div>
+        <a class="sidebar-link" href="/docs/images/dashboard.png" target="_blank" rel="noopener">Product tour</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="page-title">Overview</h1>
+          <p class="subtitle">RAG quality, golden-set regression, and production trace monitoring</p>
+        </div>
+        <div class="topbar-actions">
+          <select id="dataset-select" class="select"></select>
+          <button id="run-eval-btn" class="btn btn-primary">Run Evaluation</button>
+        </div>
+      </header>
+
+      <section id="panel-overview" class="panel active">
+        <div class="metrics-grid">
+          <article class="metric-card">
+            <p class="metric-label">Pass Rate</p>
+            <p class="metric-value" id="metric-pass-rate">—</p>
+            <div class="metric-bar"><span id="bar-pass-rate"></span></div>
+          </article>
+          <article class="metric-card">
+            <p class="metric-label">Evaluation Runs</p>
+            <p class="metric-value" id="metric-runs">—</p>
+            <p class="metric-hint">Completed regression suites</p>
+          </article>
+          <article class="metric-card">
+            <p class="metric-label">Trace Events</p>
+            <p class="metric-value" id="metric-traces">—</p>
+            <p class="metric-hint">LLM calls logged</p>
+          </article>
+          <article class="metric-card">
+            <p class="metric-label">Avg Latency</p>
+            <p class="metric-value" id="metric-latency">—</p>
+            <p class="metric-hint">Milliseconds per trace</p>
+          </article>
+        </div>
+
+        <div class="grid-2">
+          <section class="card">
+            <div class="card-head">
+              <h2>Latest Evaluation Runs</h2>
+            </div>
+            <div id="runs-preview" class="runs-list"></div>
+          </section>
+          <section class="card">
+            <div class="card-head">
+              <h2>Quality Breakdown</h2>
+            </div>
+            <div id="quality-chart" class="quality-chart"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="panel-evaluations" class="panel">
+        <section class="card">
+          <div class="card-head">
+            <h2>Evaluation History</h2>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Run</th>
+                  <th>Status</th>
+                  <th>Pass Rate</th>
+                  <th>Faithfulness</th>
+                  <th>Relevance</th>
+                  <th>Precision</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="eval-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+        <section class="card detail-card hidden" id="eval-detail">
+          <div class="card-head">
+            <h2 id="eval-detail-title">Run Details</h2>
+            <button class="btn btn-ghost" id="close-detail">Close</button>
+          </div>
+          <div id="eval-detail-body"></div>
+        </section>
+      </section>
+
+      <section id="panel-datasets" class="panel">
+        <section class="card">
+          <div class="card-head"><h2>Golden Datasets</h2></div>
+          <div id="datasets-grid" class="datasets-grid"></div>
+        </section>
+      </section>
+
+      <section id="panel-traces" class="panel">
+        <section class="card">
+          <div class="card-head"><h2>Recent LLM Traces</h2></div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Service</th>
+                  <th>Operation</th>
+                  <th>Model</th>
+                  <th>Latency</th>
+                  <th>Tokens</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="trace-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

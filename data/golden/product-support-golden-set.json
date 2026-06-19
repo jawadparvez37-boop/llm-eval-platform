@@ -1,0 +1,41 @@
+{
+  "name": "product-support-golden-set",
+  "description": "Golden Q&A set for support policy evaluation",
+  "items": [
+    {
+      "id": "q1",
+      "question": "What is the refund window for unused products?",
+      "expected_answer": "Refunds are available within 30 days for unused products.",
+      "reference_context": "Refunds are available within 30 days for unused products. Contact support with your order ID.",
+      "tags": ["refund", "policy"]
+    },
+    {
+      "id": "q2",
+      "question": "How long does standard shipping take?",
+      "expected_answer": "Standard shipping takes 3-5 business days.",
+      "reference_context": "Standard shipping takes 3-5 business days. Express options are available at checkout.",
+      "tags": ["shipping"]
+    },
+    {
+      "id": "q3",
+      "question": "When is customer support available?",
+      "expected_answer": "Support is available Monday to Friday, 9am-6pm Central Time.",
+      "reference_context": "Support hours are Monday to Friday, 9am-6pm Central Time.",
+      "tags": ["support"]
+    },
+    {
+      "id": "q4",
+      "question": "When are enterprise invoices generated?",
+      "expected_answer": "Invoices are generated on the first business day of each month.",
+      "reference_context": "Invoices are generated on the first business day of each month for enterprise accounts.",
+      "tags": ["billing"]
+    },
+    {
+      "id": "q5",
+      "question": "How often should API keys be rotated?",
+      "expected_answer": "API keys must be rotated every 90 days.",
+      "reference_context": "API keys must be rotated every 90 days. MFA is required for admin accounts.",
+      "tags": ["security"]
+    }
+  ]
+}

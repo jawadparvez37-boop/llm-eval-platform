@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: eval
+      POSTGRES_PASSWORD: eval
+      POSTGRES_DB: eval
+    ports:
+      - "5434:5432"
+    volumes:
+      - eval_pgdata:/var/lib/postgresql/data
+
+volumes:
+  eval_pgdata:

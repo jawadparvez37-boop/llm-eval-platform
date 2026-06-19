@@ -1,0 +1,34 @@
+{
+  "name": "rag-quality-regression-set",
+  "description": "Regression prompts for grounded answer quality checks",
+  "items": [
+    {
+      "id": "r1",
+      "question": "Can I get a refund after 45 days?",
+      "expected_answer": "No, refunds are only available within 30 days.",
+      "reference_context": "Refunds are available within 30 days for unused products. Contact support with your order ID.",
+      "tags": ["refund", "negative"]
+    },
+    {
+      "id": "r2",
+      "question": "Do you offer overnight shipping?",
+      "expected_answer": "Express options are available at checkout.",
+      "reference_context": "Standard shipping takes 3-5 business days. Express options are available at checkout.",
+      "tags": ["shipping"]
+    },
+    {
+      "id": "r3",
+      "question": "Is weekend support available?",
+      "expected_answer": "Support is not available on weekends.",
+      "reference_context": "Support hours are Monday to Friday, 9am-6pm Central Time.",
+      "tags": ["support", "negative"]
+    },
+    {
+      "id": "r4",
+      "question": "Is MFA required for admin accounts?",
+      "expected_answer": "Yes, MFA is required for admin accounts.",
+      "reference_context": "API keys must be rotated every 90 days. MFA is required for admin accounts.",
+      "tags": ["security"]
+    }
+  ]
+}
